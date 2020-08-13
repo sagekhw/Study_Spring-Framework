@@ -1,5 +1,6 @@
 package kr.co.fastcampus.eatgo.interfaces;
 
+import kr.co.fastcampus.eatgo.domain.MenuItem;
 import kr.co.fastcampus.eatgo.domain.Restaurant;
 import kr.co.fastcampus.eatgo.domain.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class RestaurantController {
     public Restaurant detail(@PathVariable("id") Long id){
 
         Restaurant restaurant = repository.findById(id);
+        restaurant.addMenuItem(new MenuItem("Kimchi"));
         System.out.println("###  [result] : "+restaurant.getId()+" "+restaurant.getName());
         return restaurant;
     }
